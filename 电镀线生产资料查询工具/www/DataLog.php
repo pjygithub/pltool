@@ -349,7 +349,7 @@ $cols = array_values($cols);
 // print_r($cols);
 
 // 按需加载
-if (!isset($_COOKIE['show']) or $_COOKIE['show'] == "table"  or $_COOKIE['model'] == 'zh_help') {
+if ($_COOKIE['show'] == "table"  or $_COOKIE['model'] == 'zh_help') {
     include(dirname(__DIR__) . '/www/viewer/table.php');
 } elseif ($_COOKIE['type'] == 'EBOtime') {
     include(dirname(__DIR__) . '/www/viewer/ebotime.php');
