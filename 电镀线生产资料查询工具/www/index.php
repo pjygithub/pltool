@@ -766,7 +766,7 @@ if (file_exists($FFversion)) {  // 判断是否有这个文件
     </script>
     <?php
     // 定义默认值
-    (isset($_COOKIE['func'])) ? ($func = $_COOKIE['func']) : ($func = "guide_image");
+    (isset($_COOKIE['func'])) ? ($func = $_COOKIE['func']) : ($func = "DataLog");
     (isset($_COOKIE['show'])) ? ($show = $_COOKIE['show']) : ($show = "image");
     (isset($_COOKIE['type'])) ? ($type = $_COOKIE['type']) : ($type = "main");
     (isset($_COOKIE['line'])) ? ($line = $_COOKIE['line']) : ($line = "line0");
