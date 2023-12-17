@@ -88,9 +88,22 @@ $machines_arr = json_decode($machines_str, true);
         <h2>其他设置：</h2>
         <label for="echartShowTime">图表默认显示长度（分钟）：</label><input type="number" name="echartShowTime" id="echartShowTime" value="<?php echo $echartShowTime ?>" step="1" min="10" max="3000"><label for="echartShowTime"> 比如：450个数据点。可输入10~3000</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
         <label for="echartShowFloatNum">图表显示小数位数：</label><input type="number" name="echartShowFloatNum" id="echartShowFloatNum" value="<?php echo $echartShowFloatNum ?>" step="1" min="0" max="6"><label for="echartShowFloatNum"> 比如：3是0.001，0为整数。可输入0~6</label><br>
+        <div class="layui-form">
+            运行图表使用高亮显示（鼠标悬停在线条或图例上会突出显示）：
+            <?
+            if ($highEchart == 1) {
+                echo '
+                <input type="radio" name="highEchart" value="1" title="启用图表高亮" checked>
+                <input type="radio" name="highEchart" value="2" title="禁用图表高亮">';
+            } else {
+                echo '
+                <input type="radio" name="highEchart" value="1" title="启用图表高亮">
+                <input type="radio" name="highEchart" value="2" title="禁用图表高亮" checked>';
+            }
+            ?>
+        </div>
         <label for="lockTime">重新认证间隔（cookie缓存时间，分钟）：</label><input type="number" name="lockTime" id="lockTime" value="<?php echo $lockTime ?>" step="1" min="15" max="1440"><label for="lockTime"> 比如：15分钟后需要重新输入口令进行认证。可输入15~1440</label><br>
-        <label for="tableLicensekey">handsontable授权码：</label><input type="text" name="tableLicensekey" id="tableLicensekey" value="<?php echo urldecode($tableLicensekey) ?>" style="width:28rem">
-        <br>
+
         <div class="layui-form" style="display:none">
             测试版发布版：<?
                     if ($Release == 1) {
@@ -120,20 +133,7 @@ $machines_arr = json_decode($machines_str, true);
         <label for="autoRefreshTime">全局页面自动刷新间隔（秒）：</label><input type="number" name="autoRefreshTime" id="autoRefreshTime" value="<?php echo $autoRefreshTime ?>" step="1" min="5" max="360"><label for="autoRefreshTime"> 比如：15秒后整体页面自动刷新。可输入5~360</label><br>
         <label for="calendarMark">日历节日设置：</label>
         <textarea name="calendarMark" id="calendarMark" cols="30" rows="5"><?php echo $calendarMark ?></textarea><label for="calendarMark"> 格式如：<span style="padding:5px;color:#fff;background-color:#16b777;font-weight: 800;font-family: '宋体';">'0-0-0:' ',</span>，均用半角符号，不可省略，数字分别表示年月日，为0时均为任意年月日。标题建议少于4个字</label><br>
-        <div class="layui-form">
-            运行图表使用高亮显示（鼠标悬停在线条或图例上会突出显示）：
-            <?
-            if ($highEchart == 1) {
-                echo '
-                <input type="radio" name="highEchart" value="1" title="启用图表高亮" checked>
-                <input type="radio" name="highEchart" value="2" title="禁用图表高亮">';
-            } else {
-                echo '
-                <input type="radio" name="highEchart" value="1" title="启用图表高亮">
-                <input type="radio" name="highEchart" value="2" title="禁用图表高亮" checked>';
-            }
-            ?>
-        </div>
+
         <div class="layui-form">
             ☆自定义筛选☆的筛选项排序方式：
             <?
@@ -155,7 +155,7 @@ $machines_arr = json_decode($machines_str, true);
             }
             ?>
         </div>
-        <div class="layui-form">
+        <div class="layui-form" style="display:none">
             运行图表提示框排序方式：
             <?
             if ($echartSort == 'seriesAsc') {
@@ -184,7 +184,10 @@ $machines_arr = json_decode($machines_str, true);
                 <input type="radio" name="echartSort" value="valueDesc" title="根据数据值, 降序排列" checked>';
             }
             ?>
+
         </div>
+        <label for="tableLicensekey">handsontable授权码：</label><input type="text" name="tableLicensekey" id="tableLicensekey" value="<?php echo urldecode($tableLicensekey) ?>" style="width:28rem">
+        <br>
         <h2>机台主机名和IP设置：</h2>
 
         <table>
