@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="zh_cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>表头设置</title>
+    <script src="./layui/layui.js"></script>
+    <link rel="stylesheet" href="./layui/css/layui.css">
+    <script src="js/jquery.js"></script>
+</head>
+<style>
+    * {
+        font-size: 1rem;
+    }
+
+    input {
+        padding-left: 10px;
+    }
+
+    input[type=text] {
+        /* width: 26rem; */
+        /* width: 30%; */
+        height: 2rem;
+        border: 0px;
+        border-bottom: 1px solid #333;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    input[type=number] {
+        /* width: 26rem; */
+        /* width: 30%; */
+        height: 2rem;
+        border: 0px;
+        border-bottom: 1px solid #333;
+    }
+
+    .leftRight {
+        width: 49.5%;
+        /* position: absolute; */
+        float: left;
+    }
+
+    .layui-btn1 {
+        position: fixed;
+        height: 36px;
+        line-height: 36px;
+        border: 1px solid transparent;
+        padding: 0 18px;
+        background-color: #009688;
+        color: #fff;
+        white-space: nowrap;
+        text-align: center;
+        font-size: 14px;
+        border-radius: 20px;
+        cursor: pointer;
+        outline: 0;
+        -webkit-appearance: none;
+        transition: all .3s;
+        -webkit-transition: all .3s;
+        box-sizing: border-box;
+        top: 0;
+        left: 0;
+    }
+
+    table {
+        width: 100%;
+    }
+
+    table>tbody>tr>td {
+        /* border: 1px solid red; */
+        text-align: center;
+        font-size: 12px;
+    }
+
+    .layui-table td,
+    .layui-table th {
+        text-align: left;
+    }
+
+    select {
+        height: 2rem;
+    }
+</style>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="layui/css/layui.css">
+    <script src="layui/layui.js"></script>
+    <script src="layui/layer/layer.js"></script>
+</head>
+
+<body>
+    </body>
+
+</html><link rel="stylesheet" href="layui/css/layui.css">
+<script src="layui/layui.js"></script>
+<script src="layui/layer/layer.js"></script>
+
+<body>
+    <div>
+        <span style="display:inline-block;margin-top:2.5rem;width:49%;font-weight: 900;font-size:1.5rem;">数据库中已有的（<span>已存储的全部</span>）</span>
+        <span style="display:inline-block;margin-top:2.5rem;width:49%;font-weight: 900;font-size:1.5rem;text-align:right;"><a href="./tbheader_config.php">链接：管理当前机台实时</a></span>
+    </div>
+    <form action="./function/tbheader_config_func.php" method="post">
+        <input type="submit" value="保存设置" class="layui-btn1" style="z-index:999">
+        <script>
+            $('input.layui-btn1').on("click", function() {
+                $('input.layui-btn1').val('正在保存，请稍后……');
+            });
+        </script>
+        <div id="demo-laypage-1" style="height: 35px;"></div>
+        <table class="layui-table" lay-even>
+            <colgroup>
+                <col width="15">
+                <col>
+                <col>
+                <col width="15">
+                <col width="15">
+                <col width="15">
+                <col width="15">
+                <col width="15">
+                <col width="15">
+            </colgroup>
+            <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>表头(源)</th>
+                    <th>表头(中文)</th>
+                    <th>类型选择</th>
+                    <th>线0显示</th>
+                    <th>线1显示</th>
+                    <th>线2显示</th>
+                    <th>线3显示</th>
+                    <th>线4显示</th>
+                    <!-- <th>默认显示</th> -->
+                    <th>mainPlating显示</th>
+                    <th>是否数值</th>
+                </tr>
+            </thead>
+
+            <tbody id="tb_data">
+                <tr><input type="text" name="tbheaderID[]" value="L1 M5Curr(1)" hidden><td>81</td><td><a href="./zh_cn_en_only_config.php?tbheaderIDID=L1+M5Curr%281%29" title="单个设置是否显示">L1 M5Curr(1)</a></td><td><a href="./zh_cn_en_only_config.php?tbheaderIDID=L1+M5Curr%281%29" title="单个设置中文翻译">线1 区域05 实时电流(1)</a></td><td><div class="layui-col-md6">
+                <select lay-search="" name="tbheader_type[]"  style="background-color:#91CC75">
+                  <option value="">请选择类型</option><option value="1"  selected>电流 _(Current )</option><option value="2">电压 _(Voltage)</option><option value="3">抗氧化电导率 _(Conductivity)</option><option value="4">脉冲时间 _(OnOffTime)</option><option value="5">上水速度 _(PumpSpeed)</option><option value="6">LF速度 _(LFSpeed)</option><option value="7">温度 _(Temperature)</option><option value="8">安培分钟 _(AmpMin)</option><option value="9">流量 _(FlowRate)</option><option value="10">压力 _(Pressure)</option><option value="11">pH _(pH)</option><option value="12">液位 _(level)</option><option value="13">Be _(Be)</option><option value="14">其他 _(other)</option></select></div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_L0[]" lay-text="线0" value="L1 M5Curr(1)"> 
+            </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_L1[]" lay-text="线1" value="L1 M5Curr(1)" checked> 
+            </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_L2[]" lay-text="线2" value="L1 M5Curr(1)"> 
+            </div></td><td><div class="layui-form">
+                <input type="checkbox" name="tbheader_L3[]" lay-text="线3" value="L1 M5Curr(1)"> 
+              </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_L4[]" lay-text="线4" value="L1 M5Curr(1)"> 
+            </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_main[]" lay-text="mainPlating" value="L1 M5Curr(1)"> 
+            </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_isNum[]" lay-text="是否数值" value="L1 M5Curr(1)"  checked> 
+            </div></td></tr><tr><input type="text" name="tbheaderID[]" value="L1 M5Curr(2)" hidden><td>82</td><td><a href="./zh_cn_en_only_config.php?tbheaderIDID=L1+M5Curr%282%29" title="单个设置是否显示">L1 M5Curr(2)</a></td><td><a href="./zh_cn_en_only_config.php?tbheaderIDID=L1+M5Curr%282%29" title="单个设置中文翻译">线1 区域05 实时电流(2)</a></td><td><div class="layui-col-md6">
+                <select lay-search="" name="tbheader_type[]"  style="background-color:#91CC75">
+                  <option value="">请选择类型</option><option value="1"  selected>电流 _(Current )</option><option value="2">电压 _(Voltage)</option><option value="3">抗氧化电导率 _(Conductivity)</option><option value="4">脉冲时间 _(OnOffTime)</option><option value="5">上水速度 _(PumpSpeed)</option><option value="6">LF速度 _(LFSpeed)</option><option value="7">温度 _(Temperature)</option><option value="8">安培分钟 _(AmpMin)</option><option value="9">流量 _(FlowRate)</option><option value="10">压力 _(Pressure)</option><option value="11">pH _(pH)</option><option value="12">液位 _(level)</option><option value="13">Be _(Be)</option><option value="14">其他 _(other)</option></select></div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_L0[]" lay-text="线0" value="L1 M5Curr(2)"> 
+            </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_L1[]" lay-text="线1" value="L1 M5Curr(2)" checked> 
+            </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_L2[]" lay-text="线2" value="L1 M5Curr(2)"> 
+            </div></td><td><div class="layui-form">
+                <input type="checkbox" name="tbheader_L3[]" lay-text="线3" value="L1 M5Curr(2)"> 
+              </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_L4[]" lay-text="线4" value="L1 M5Curr(2)"> 
+            </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_main[]" lay-text="mainPlating" value="L1 M5Curr(2)"> 
+            </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_isNum[]" lay-text="是否数值" value="L1 M5Curr(2)"  checked> 
+            </div></td></tr><tr><input type="text" name="tbheaderID[]" value="L1 M9 Current" hidden><td>83</td><td><a href="./zh_cn_en_only_config.php?tbheaderIDID=L1+M9+Current" title="单个设置是否显示">L1 M9 Current</a></td><td><a href="./zh_cn_en_only_config.php?tbheaderIDID=L1+M9+Current" title="单个设置中文翻译">线1 区域09 电流</a></td><td><div class="layui-col-md6">
+                <select lay-search="" name="tbheader_type[]"  style="background-color:#91CC75">
+                  <option value="">请选择类型</option><option value="1"  selected>电流 _(Current )</option><option value="2">电压 _(Voltage)</option><option value="3">抗氧化电导率 _(Conductivity)</option><option value="4">脉冲时间 _(OnOffTime)</option><option value="5">上水速度 _(PumpSpeed)</option><option value="6">LF速度 _(LFSpeed)</option><option value="7">温度 _(Temperature)</option><option value="8">安培分钟 _(AmpMin)</option><option value="9">流量 _(FlowRate)</option><option value="10">压力 _(Pressure)</option><option value="11">pH _(pH)</option><option value="12">液位 _(level)</option><option value="13">Be _(Be)</option><option value="14">其他 _(other)</option></select></div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_L0[]" lay-text="线0" value="L1 M9 Current"> 
+            </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_L1[]" lay-text="线1" value="L1 M9 Current" checked> 
+            </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_L2[]" lay-text="线2" value="L1 M9 Current"> 
+            </div></td><td><div class="layui-form">
+                <input type="checkbox" name="tbheader_L3[]" lay-text="线3" value="L1 M9 Current"> 
+              </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_L4[]" lay-text="线4" value="L1 M9 Current"> 
+            </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_main[]" lay-text="mainPlating" value="L1 M9 Current" checked> 
+            </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_isNum[]" lay-text="是否数值" value="L1 M9 Current"  checked> 
+            </div></td></tr><tr><input type="text" name="tbheaderID[]" value="L1 Ni(1) Current" hidden><td>84</td><td><a href="./zh_cn_en_only_config.php?tbheaderIDID=L1+Ni%281%29+Current" title="单个设置是否显示">L1 Ni(1) Current</a></td><td><a href="./zh_cn_en_only_config.php?tbheaderIDID=L1+Ni%281%29+Current" title="单个设置中文翻译">线1 镍(1) 电流</a></td><td><div class="layui-col-md6">
+                <select lay-search="" name="tbheader_type[]"  style="background-color:#91CC75">
+                  <option value="">请选择类型</option><option value="1"  selected>电流 _(Current )</option><option value="2">电压 _(Voltage)</option><option value="3">抗氧化电导率 _(Conductivity)</option><option value="4">脉冲时间 _(OnOffTime)</option><option value="5">上水速度 _(PumpSpeed)</option><option value="6">LF速度 _(LFSpeed)</option><option value="7">温度 _(Temperature)</option><option value="8">安培分钟 _(AmpMin)</option><option value="9">流量 _(FlowRate)</option><option value="10">压力 _(Pressure)</option><option value="11">pH _(pH)</option><option value="12">液位 _(level)</option><option value="13">Be _(Be)</option><option value="14">其他 _(other)</option></select></div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_L0[]" lay-text="线0" value="L1 Ni(1) Current"> 
+            </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_L1[]" lay-text="线1" value="L1 Ni(1) Current" checked> 
+            </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_L2[]" lay-text="线2" value="L1 Ni(1) Current"> 
+            </div></td><td><div class="layui-form">
+                <input type="checkbox" name="tbheader_L3[]" lay-text="线3" value="L1 Ni(1) Current"> 
+              </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_L4[]" lay-text="线4" value="L1 Ni(1) Current"> 
+            </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_main[]" lay-text="mainPlating" value="L1 Ni(1) Current" checked> 
+            </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_isNum[]" lay-text="是否数值" value="L1 Ni(1) Current"  checked> 
+            </div></td></tr><tr><input type="text" name="tbheaderID[]" value="L1 Ni(2) Current" hidden><td>85</td><td><a href="./zh_cn_en_only_config.php?tbheaderIDID=L1+Ni%282%29+Current" title="单个设置是否显示">L1 Ni(2) Current</a></td><td><a href="./zh_cn_en_only_config.php?tbheaderIDID=L1+Ni%282%29+Current" title="单个设置中文翻译">线1 镍(2) 电流</a></td><td><div class="layui-col-md6">
+                <select lay-search="" name="tbheader_type[]"  style="background-color:#91CC75">
+                  <option value="">请选择类型</option><option value="1"  selected>电流 _(Current )</option><option value="2">电压 _(Voltage)</option><option value="3">抗氧化电导率 _(Conductivity)</option><option value="4">脉冲时间 _(OnOffTime)</option><option value="5">上水速度 _(PumpSpeed)</option><option value="6">LF速度 _(LFSpeed)</option><option value="7">温度 _(Temperature)</option><option value="8">安培分钟 _(AmpMin)</option><option value="9">流量 _(FlowRate)</option><option value="10">压力 _(Pressure)</option><option value="11">pH _(pH)</option><option value="12">液位 _(level)</option><option value="13">Be _(Be)</option><option value="14">其他 _(other)</option></select></div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_L0[]" lay-text="线0" value="L1 Ni(2) Current"> 
+            </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_L1[]" lay-text="线1" value="L1 Ni(2) Current" checked> 
+            </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_L2[]" lay-text="线2" value="L1 Ni(2) Current"> 
+            </div></td><td><div class="layui-form">
+                <input type="checkbox" name="tbheader_L3[]" lay-text="线3" value="L1 Ni(2) Current"> 
+              </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_L4[]" lay-text="线4" value="L1 Ni(2) Current"> 
+            </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_main[]" lay-text="mainPlating" value="L1 Ni(2) Current" checked> 
+            </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_isNum[]" lay-text="是否数值" value="L1 Ni(2) Current"  checked> 
+            </div></td></tr><tr><input type="text" name="tbheaderID[]" value="L1 Ni(3) Current" hidden><td>86</td><td><a href="./zh_cn_en_only_config.php?tbheaderIDID=L1+Ni%283%29+Current" title="单个设置是否显示">L1 Ni(3) Current</a></td><td><a href="./zh_cn_en_only_config.php?tbheaderIDID=L1+Ni%283%29+Current" title="单个设置中文翻译">线1 镍(3) 电流</a></td><td><div class="layui-col-md6">
+                <select lay-search="" name="tbheader_type[]"  style="background-color:#91CC75">
+                  <option value="">请选择类型</option><option value="1"  selected>电流 _(Current )</option><option value="2">电压 _(Voltage)</option><option value="3">抗氧化电导率 _(Conductivity)</option><option value="4">脉冲时间 _(OnOffTime)</option><option value="5">上水速度 _(PumpSpeed)</option><option value="6">LF速度 _(LFSpeed)</option><option value="7">温度 _(Temperature)</option><option value="8">安培分钟 _(AmpMin)</option><option value="9">流量 _(FlowRate)</option><option value="10">压力 _(Pressure)</option><option value="11">pH _(pH)</option><option value="12">液位 _(level)</option><option value="13">Be _(Be)</option><option value="14">其他 _(other)</option></select></div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_L0[]" lay-text="线0" value="L1 Ni(3) Current"> 
+            </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_L1[]" lay-text="线1" value="L1 Ni(3) Current" checked> 
+            </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_L2[]" lay-text="线2" value="L1 Ni(3) Current"> 
+            </div></td><td><div class="layui-form">
+                <input type="checkbox" name="tbheader_L3[]" lay-text="线3" value="L1 Ni(3) Current"> 
+              </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_L4[]" lay-text="线4" value="L1 Ni(3) Current"> 
+            </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_main[]" lay-text="mainPlating" value="L1 Ni(3) Current" checked> 
+            </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_isNum[]" lay-text="是否数值" value="L1 Ni(3) Current"  checked> 
+            </div></td></tr><tr><input type="text" name="tbheaderID[]" value="L1 Ni(4) Current" hidden><td>87</td><td><a href="./zh_cn_en_only_config.php?tbheaderIDID=L1+Ni%284%29+Current" title="单个设置是否显示">L1 Ni(4) Current</a></td><td><a href="./zh_cn_en_only_config.php?tbheaderIDID=L1+Ni%284%29+Current" title="单个设置中文翻译">线1 镍(4) 电流</a></td><td><div class="layui-col-md6">
+                <select lay-search="" name="tbheader_type[]"  style="background-color:#91CC75">
+                  <option value="">请选择类型</option><option value="1"  selected>电流 _(Current )</option><option value="2">电压 _(Voltage)</option><option value="3">抗氧化电导率 _(Conductivity)</option><option value="4">脉冲时间 _(OnOffTime)</option><option value="5">上水速度 _(PumpSpeed)</option><option value="6">LF速度 _(LFSpeed)</option><option value="7">温度 _(Temperature)</option><option value="8">安培分钟 _(AmpMin)</option><option value="9">流量 _(FlowRate)</option><option value="10">压力 _(Pressure)</option><option value="11">pH _(pH)</option><option value="12">液位 _(level)</option><option value="13">Be _(Be)</option><option value="14">其他 _(other)</option></select></div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_L0[]" lay-text="线0" value="L1 Ni(4) Current"> 
+            </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_L1[]" lay-text="线1" value="L1 Ni(4) Current" checked> 
+            </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_L2[]" lay-text="线2" value="L1 Ni(4) Current"> 
+            </div></td><td><div class="layui-form">
+                <input type="checkbox" name="tbheader_L3[]" lay-text="线3" value="L1 Ni(4) Current"> 
+              </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_L4[]" lay-text="线4" value="L1 Ni(4) Current"> 
+            </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_main[]" lay-text="mainPlating" value="L1 Ni(4) Current" checked> 
+            </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_isNum[]" lay-text="是否数值" value="L1 Ni(4) Current"  checked> 
+            </div></td></tr><tr><input type="text" name="tbheaderID[]" value="L1 Ni(5) Current" hidden><td>88</td><td><a href="./zh_cn_en_only_config.php?tbheaderIDID=L1+Ni%285%29+Current" title="单个设置是否显示">L1 Ni(5) Current</a></td><td><a href="./zh_cn_en_only_config.php?tbheaderIDID=L1+Ni%285%29+Current" title="单个设置中文翻译">线1 镍(5) 电流</a></td><td><div class="layui-col-md6">
+                <select lay-search="" name="tbheader_type[]"  style="background-color:#91CC75">
+                  <option value="">请选择类型</option><option value="1"  selected>电流 _(Current )</option><option value="2">电压 _(Voltage)</option><option value="3">抗氧化电导率 _(Conductivity)</option><option value="4">脉冲时间 _(OnOffTime)</option><option value="5">上水速度 _(PumpSpeed)</option><option value="6">LF速度 _(LFSpeed)</option><option value="7">温度 _(Temperature)</option><option value="8">安培分钟 _(AmpMin)</option><option value="9">流量 _(FlowRate)</option><option value="10">压力 _(Pressure)</option><option value="11">pH _(pH)</option><option value="12">液位 _(level)</option><option value="13">Be _(Be)</option><option value="14">其他 _(other)</option></select></div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_L0[]" lay-text="线0" value="L1 Ni(5) Current"> 
+            </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_L1[]" lay-text="线1" value="L1 Ni(5) Current" checked> 
+            </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_L2[]" lay-text="线2" value="L1 Ni(5) Current"> 
+            </div></td><td><div class="layui-form">
+                <input type="checkbox" name="tbheader_L3[]" lay-text="线3" value="L1 Ni(5) Current"> 
+              </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_L4[]" lay-text="线4" value="L1 Ni(5) Current"> 
+            </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_main[]" lay-text="mainPlating" value="L1 Ni(5) Current" checked> 
+            </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_isNum[]" lay-text="是否数值" value="L1 Ni(5) Current"  checked> 
+            </div></td></tr><tr><input type="text" name="tbheaderID[]" value="L1 Ni(6) Current" hidden><td>89</td><td><a href="./zh_cn_en_only_config.php?tbheaderIDID=L1+Ni%286%29+Current" title="单个设置是否显示">L1 Ni(6) Current</a></td><td><a href="./zh_cn_en_only_config.php?tbheaderIDID=L1+Ni%286%29+Current" title="单个设置中文翻译">线1 镍(6) 电流</a></td><td><div class="layui-col-md6">
+                <select lay-search="" name="tbheader_type[]"  style="background-color:#91CC75">
+                  <option value="">请选择类型</option><option value="1"  selected>电流 _(Current )</option><option value="2">电压 _(Voltage)</option><option value="3">抗氧化电导率 _(Conductivity)</option><option value="4">脉冲时间 _(OnOffTime)</option><option value="5">上水速度 _(PumpSpeed)</option><option value="6">LF速度 _(LFSpeed)</option><option value="7">温度 _(Temperature)</option><option value="8">安培分钟 _(AmpMin)</option><option value="9">流量 _(FlowRate)</option><option value="10">压力 _(Pressure)</option><option value="11">pH _(pH)</option><option value="12">液位 _(level)</option><option value="13">Be _(Be)</option><option value="14">其他 _(other)</option></select></div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_L0[]" lay-text="线0" value="L1 Ni(6) Current"> 
+            </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_L1[]" lay-text="线1" value="L1 Ni(6) Current" checked> 
+            </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_L2[]" lay-text="线2" value="L1 Ni(6) Current"> 
+            </div></td><td><div class="layui-form">
+                <input type="checkbox" name="tbheader_L3[]" lay-text="线3" value="L1 Ni(6) Current"> 
+              </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_L4[]" lay-text="线4" value="L1 Ni(6) Current"> 
+            </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_main[]" lay-text="mainPlating" value="L1 Ni(6) Current" checked> 
+            </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_isNum[]" lay-text="是否数值" value="L1 Ni(6) Current"  checked> 
+            </div></td></tr><tr><input type="text" name="tbheaderID[]" value="L1 Pd Curr" hidden><td>90</td><td><a href="./zh_cn_en_only_config.php?tbheaderIDID=L1+Pd+Curr" title="单个设置是否显示">L1 Pd Curr</a></td><td><a href="./zh_cn_en_only_config.php?tbheaderIDID=L1+Pd+Curr" title="单个设置中文翻译">线1 钯 电流读数</a></td><td><div class="layui-col-md6">
+                <select lay-search="" name="tbheader_type[]"  style="background-color:#91CC75">
+                  <option value="">请选择类型</option><option value="1"  selected>电流 _(Current )</option><option value="2">电压 _(Voltage)</option><option value="3">抗氧化电导率 _(Conductivity)</option><option value="4">脉冲时间 _(OnOffTime)</option><option value="5">上水速度 _(PumpSpeed)</option><option value="6">LF速度 _(LFSpeed)</option><option value="7">温度 _(Temperature)</option><option value="8">安培分钟 _(AmpMin)</option><option value="9">流量 _(FlowRate)</option><option value="10">压力 _(Pressure)</option><option value="11">pH _(pH)</option><option value="12">液位 _(level)</option><option value="13">Be _(Be)</option><option value="14">其他 _(other)</option></select></div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_L0[]" lay-text="线0" value="L1 Pd Curr"> 
+            </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_L1[]" lay-text="线1" value="L1 Pd Curr" checked> 
+            </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_L2[]" lay-text="线2" value="L1 Pd Curr"> 
+            </div></td><td><div class="layui-form">
+                <input type="checkbox" name="tbheader_L3[]" lay-text="线3" value="L1 Pd Curr"> 
+              </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_L4[]" lay-text="线4" value="L1 Pd Curr"> 
+            </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_main[]" lay-text="mainPlating" value="L1 Pd Curr" checked> 
+            </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_isNum[]" lay-text="是否数值" value="L1 Pd Curr"  checked> 
+            </div></td></tr><tr><input type="text" name="tbheaderID[]" value="L1 Pd Current" hidden><td>91</td><td><a href="./zh_cn_en_only_config.php?tbheaderIDID=L1+Pd+Current" title="单个设置是否显示">L1 Pd Current</a></td><td><a href="./zh_cn_en_only_config.php?tbheaderIDID=L1+Pd+Current" title="单个设置中文翻译">线1 钯 电流</a></td><td><div class="layui-col-md6">
+                <select lay-search="" name="tbheader_type[]"  style="background-color:#91CC75">
+                  <option value="">请选择类型</option><option value="1"  selected>电流 _(Current )</option><option value="2">电压 _(Voltage)</option><option value="3">抗氧化电导率 _(Conductivity)</option><option value="4">脉冲时间 _(OnOffTime)</option><option value="5">上水速度 _(PumpSpeed)</option><option value="6">LF速度 _(LFSpeed)</option><option value="7">温度 _(Temperature)</option><option value="8">安培分钟 _(AmpMin)</option><option value="9">流量 _(FlowRate)</option><option value="10">压力 _(Pressure)</option><option value="11">pH _(pH)</option><option value="12">液位 _(level)</option><option value="13">Be _(Be)</option><option value="14">其他 _(other)</option></select></div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_L0[]" lay-text="线0" value="L1 Pd Current"> 
+            </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_L1[]" lay-text="线1" value="L1 Pd Current" checked> 
+            </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_L2[]" lay-text="线2" value="L1 Pd Current"> 
+            </div></td><td><div class="layui-form">
+                <input type="checkbox" name="tbheader_L3[]" lay-text="线3" value="L1 Pd Current"> 
+              </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_L4[]" lay-text="线4" value="L1 Pd Current"> 
+            </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_main[]" lay-text="mainPlating" value="L1 Pd Current" checked> 
+            </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_isNum[]" lay-text="是否数值" value="L1 Pd Current"  checked> 
+            </div></td></tr><tr><input type="text" name="tbheaderID[]" value="L1 SBS Current" hidden><td>92</td><td><a href="./zh_cn_en_only_config.php?tbheaderIDID=L1+SBS+Current" title="单个设置是否显示">L1 SBS Current</a></td><td><a href="./zh_cn_en_only_config.php?tbheaderIDID=L1+SBS+Current" title="单个设置中文翻译">线1 SBS 电流</a></td><td><div class="layui-col-md6">
+                <select lay-search="" name="tbheader_type[]"  style="background-color:#91CC75">
+                  <option value="">请选择类型</option><option value="1"  selected>电流 _(Current )</option><option value="2">电压 _(Voltage)</option><option value="3">抗氧化电导率 _(Conductivity)</option><option value="4">脉冲时间 _(OnOffTime)</option><option value="5">上水速度 _(PumpSpeed)</option><option value="6">LF速度 _(LFSpeed)</option><option value="7">温度 _(Temperature)</option><option value="8">安培分钟 _(AmpMin)</option><option value="9">流量 _(FlowRate)</option><option value="10">压力 _(Pressure)</option><option value="11">pH _(pH)</option><option value="12">液位 _(level)</option><option value="13">Be _(Be)</option><option value="14">其他 _(other)</option></select></div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_L0[]" lay-text="线0" value="L1 SBS Current"> 
+            </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_L1[]" lay-text="线1" value="L1 SBS Current" checked> 
+            </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_L2[]" lay-text="线2" value="L1 SBS Current"> 
+            </div></td><td><div class="layui-form">
+                <input type="checkbox" name="tbheader_L3[]" lay-text="线3" value="L1 SBS Current"> 
+              </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_L4[]" lay-text="线4" value="L1 SBS Current"> 
+            </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_main[]" lay-text="mainPlating" value="L1 SBS Current" checked> 
+            </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_isNum[]" lay-text="是否数值" value="L1 SBS Current"  checked> 
+            </div></td></tr><tr><input type="text" name="tbheaderID[]" value="L1 Silver Strike Current" hidden><td>93</td><td><a href="./zh_cn_en_only_config.php?tbheaderIDID=L1+Silver+Strike+Current" title="单个设置是否显示">L1 Silver Strike Current</a></td><td><a href="./zh_cn_en_only_config.php?tbheaderIDID=L1+Silver+Strike+Current" title="单个设置中文翻译">线1 预镀银 电流</a></td><td><div class="layui-col-md6">
+                <select lay-search="" name="tbheader_type[]"  style="background-color:#91CC75">
+                  <option value="">请选择类型</option><option value="1"  selected>电流 _(Current )</option><option value="2">电压 _(Voltage)</option><option value="3">抗氧化电导率 _(Conductivity)</option><option value="4">脉冲时间 _(OnOffTime)</option><option value="5">上水速度 _(PumpSpeed)</option><option value="6">LF速度 _(LFSpeed)</option><option value="7">温度 _(Temperature)</option><option value="8">安培分钟 _(AmpMin)</option><option value="9">流量 _(FlowRate)</option><option value="10">压力 _(Pressure)</option><option value="11">pH _(pH)</option><option value="12">液位 _(level)</option><option value="13">Be _(Be)</option><option value="14">其他 _(other)</option></select></div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_L0[]" lay-text="线0" value="L1 Silver Strike Current"> 
+            </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_L1[]" lay-text="线1" value="L1 Silver Strike Current" checked> 
+            </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_L2[]" lay-text="线2" value="L1 Silver Strike Current"> 
+            </div></td><td><div class="layui-form">
+                <input type="checkbox" name="tbheader_L3[]" lay-text="线3" value="L1 Silver Strike Current"> 
+              </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_L4[]" lay-text="线4" value="L1 Silver Strike Current"> 
+            </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_main[]" lay-text="mainPlating" value="L1 Silver Strike Current" checked> 
+            </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_isNum[]" lay-text="是否数值" value="L1 Silver Strike Current"  checked> 
+            </div></td></tr><tr><input type="text" name="tbheaderID[]" value="L1 Ag Current" hidden><td>94</td><td><a href="./zh_cn_en_only_config.php?tbheaderIDID=L1%C2%A0Ag%C2%A0Current" title="单个设置是否显示">L1 Ag Current</a></td><td><a href="./zh_cn_en_only_config.php?tbheaderIDID=L1%C2%A0Ag%C2%A0Current" title="单个设置中文翻译">线1 镀银 电流</a></td><td><div class="layui-col-md6">
+                <select lay-search="" name="tbheader_type[]"  style="background-color:#91CC75">
+                  <option value="">请选择类型</option><option value="1"  selected>电流 _(Current )</option><option value="2">电压 _(Voltage)</option><option value="3">抗氧化电导率 _(Conductivity)</option><option value="4">脉冲时间 _(OnOffTime)</option><option value="5">上水速度 _(PumpSpeed)</option><option value="6">LF速度 _(LFSpeed)</option><option value="7">温度 _(Temperature)</option><option value="8">安培分钟 _(AmpMin)</option><option value="9">流量 _(FlowRate)</option><option value="10">压力 _(Pressure)</option><option value="11">pH _(pH)</option><option value="12">液位 _(level)</option><option value="13">Be _(Be)</option><option value="14">其他 _(other)</option></select></div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_L0[]" lay-text="线0" value="L1 Ag Current"> 
+            </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_L1[]" lay-text="线1" value="L1 Ag Current" checked> 
+            </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_L2[]" lay-text="线2" value="L1 Ag Current"> 
+            </div></td><td><div class="layui-form">
+                <input type="checkbox" name="tbheader_L3[]" lay-text="线3" value="L1 Ag Current"> 
+              </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_L4[]" lay-text="线4" value="L1 Ag Current"> 
+            </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_main[]" lay-text="mainPlating" value="L1 Ag Current" checked> 
+            </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_isNum[]" lay-text="是否数值" value="L1 Ag Current"  checked> 
+            </div></td></tr><tr><input type="text" name="tbheaderID[]" value="L1 Ag Plating Current" hidden><td>95</td><td><a href="./zh_cn_en_only_config.php?tbheaderIDID=L1%C2%A0Ag%C2%A0Plating%C2%A0Current" title="单个设置是否显示">L1 Ag Plating Current</a></td><td><a href="./zh_cn_en_only_config.php?tbheaderIDID=L1%C2%A0Ag%C2%A0Plating%C2%A0Current" title="单个设置中文翻译">线1 镀银 电流</a></td><td><div class="layui-col-md6">
+                <select lay-search="" name="tbheader_type[]"  style="background-color:#91CC75">
+                  <option value="">请选择类型</option><option value="1"  selected>电流 _(Current )</option><option value="2">电压 _(Voltage)</option><option value="3">抗氧化电导率 _(Conductivity)</option><option value="4">脉冲时间 _(OnOffTime)</option><option value="5">上水速度 _(PumpSpeed)</option><option value="6">LF速度 _(LFSpeed)</option><option value="7">温度 _(Temperature)</option><option value="8">安培分钟 _(AmpMin)</option><option value="9">流量 _(FlowRate)</option><option value="10">压力 _(Pressure)</option><option value="11">pH _(pH)</option><option value="12">液位 _(level)</option><option value="13">Be _(Be)</option><option value="14">其他 _(other)</option></select></div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_L0[]" lay-text="线0" value="L1 Ag Plating Current"> 
+            </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_L1[]" lay-text="线1" value="L1 Ag Plating Current" checked> 
+            </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_L2[]" lay-text="线2" value="L1 Ag Plating Current"> 
+            </div></td><td><div class="layui-form">
+                <input type="checkbox" name="tbheader_L3[]" lay-text="线3" value="L1 Ag Plating Current"> 
+              </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_L4[]" lay-text="线4" value="L1 Ag Plating Current"> 
+            </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_main[]" lay-text="mainPlating" value="L1 Ag Plating Current" checked> 
+            </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_isNum[]" lay-text="是否数值" value="L1 Ag Plating Current"  checked> 
+            </div></td></tr><tr><input type="text" name="tbheaderID[]" value="L1 Ag Strike Current" hidden><td>96</td><td><a href="./zh_cn_en_only_config.php?tbheaderIDID=L1%C2%A0Ag%C2%A0Strike%C2%A0Current" title="单个设置是否显示">L1 Ag Strike Current</a></td><td><a href="./zh_cn_en_only_config.php?tbheaderIDID=L1%C2%A0Ag%C2%A0Strike%C2%A0Current" title="单个设置中文翻译">线1 预镀银 电流</a></td><td><div class="layui-col-md6">
+                <select lay-search="" name="tbheader_type[]"  style="background-color:#91CC75">
+                  <option value="">请选择类型</option><option value="1"  selected>电流 _(Current )</option><option value="2">电压 _(Voltage)</option><option value="3">抗氧化电导率 _(Conductivity)</option><option value="4">脉冲时间 _(OnOffTime)</option><option value="5">上水速度 _(PumpSpeed)</option><option value="6">LF速度 _(LFSpeed)</option><option value="7">温度 _(Temperature)</option><option value="8">安培分钟 _(AmpMin)</option><option value="9">流量 _(FlowRate)</option><option value="10">压力 _(Pressure)</option><option value="11">pH _(pH)</option><option value="12">液位 _(level)</option><option value="13">Be _(Be)</option><option value="14">其他 _(other)</option></select></div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_L0[]" lay-text="线0" value="L1 Ag Strike Current"> 
+            </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_L1[]" lay-text="线1" value="L1 Ag Strike Current" checked> 
+            </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_L2[]" lay-text="线2" value="L1 Ag Strike Current"> 
+            </div></td><td><div class="layui-form">
+                <input type="checkbox" name="tbheader_L3[]" lay-text="线3" value="L1 Ag Strike Current"> 
+              </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_L4[]" lay-text="线4" value="L1 Ag Strike Current"> 
+            </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_main[]" lay-text="mainPlating" value="L1 Ag Strike Current" checked> 
+            </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_isNum[]" lay-text="是否数值" value="L1 Ag Strike Current"  checked> 
+            </div></td></tr><tr><input type="text" name="tbheaderID[]" value="L1 AgStrike" hidden><td>97</td><td><a href="./zh_cn_en_only_config.php?tbheaderIDID=L1%C2%A0AgStrike" title="单个设置是否显示">L1 AgStrike</a></td><td><a href="./zh_cn_en_only_config.php?tbheaderIDID=L1%C2%A0AgStrike" title="单个设置中文翻译">线1 预镀银 电流读数</a></td><td><div class="layui-col-md6">
+                <select lay-search="" name="tbheader_type[]"  style="background-color:#91CC75">
+                  <option value="">请选择类型</option><option value="1"  selected>电流 _(Current )</option><option value="2">电压 _(Voltage)</option><option value="3">抗氧化电导率 _(Conductivity)</option><option value="4">脉冲时间 _(OnOffTime)</option><option value="5">上水速度 _(PumpSpeed)</option><option value="6">LF速度 _(LFSpeed)</option><option value="7">温度 _(Temperature)</option><option value="8">安培分钟 _(AmpMin)</option><option value="9">流量 _(FlowRate)</option><option value="10">压力 _(Pressure)</option><option value="11">pH _(pH)</option><option value="12">液位 _(level)</option><option value="13">Be _(Be)</option><option value="14">其他 _(other)</option></select></div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_L0[]" lay-text="线0" value="L1 AgStrike"> 
+            </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_L1[]" lay-text="线1" value="L1 AgStrike" checked> 
+            </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_L2[]" lay-text="线2" value="L1 AgStrike"> 
+            </div></td><td><div class="layui-form">
+                <input type="checkbox" name="tbheader_L3[]" lay-text="线3" value="L1 AgStrike"> 
+              </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_L4[]" lay-text="线4" value="L1 AgStrike"> 
+            </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_main[]" lay-text="mainPlating" value="L1 AgStrike" checked> 
+            </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_isNum[]" lay-text="是否数值" value="L1 AgStrike"  checked> 
+            </div></td></tr><tr><input type="text" name="tbheaderID[]" value="L1 Au CurrentMeter" hidden><td>98</td><td><a href="./zh_cn_en_only_config.php?tbheaderIDID=L1%C2%A0Au%C2%A0CurrentMeter" title="单个设置是否显示">L1 Au CurrentMeter</a></td><td><a href="./zh_cn_en_only_config.php?tbheaderIDID=L1%C2%A0Au%C2%A0CurrentMeter" title="单个设置中文翻译">线1 镀金 电流读数</a></td><td><div class="layui-col-md6">
+                <select lay-search="" name="tbheader_type[]"  style="background-color:#91CC75">
+                  <option value="">请选择类型</option><option value="1"  selected>电流 _(Current )</option><option value="2">电压 _(Voltage)</option><option value="3">抗氧化电导率 _(Conductivity)</option><option value="4">脉冲时间 _(OnOffTime)</option><option value="5">上水速度 _(PumpSpeed)</option><option value="6">LF速度 _(LFSpeed)</option><option value="7">温度 _(Temperature)</option><option value="8">安培分钟 _(AmpMin)</option><option value="9">流量 _(FlowRate)</option><option value="10">压力 _(Pressure)</option><option value="11">pH _(pH)</option><option value="12">液位 _(level)</option><option value="13">Be _(Be)</option><option value="14">其他 _(other)</option></select></div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_L0[]" lay-text="线0" value="L1 Au CurrentMeter"> 
+            </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_L1[]" lay-text="线1" value="L1 Au CurrentMeter" checked> 
+            </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_L2[]" lay-text="线2" value="L1 Au CurrentMeter"> 
+            </div></td><td><div class="layui-form">
+                <input type="checkbox" name="tbheader_L3[]" lay-text="线3" value="L1 Au CurrentMeter"> 
+              </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_L4[]" lay-text="线4" value="L1 Au CurrentMeter"> 
+            </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_main[]" lay-text="mainPlating" value="L1 Au CurrentMeter" checked> 
+            </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_isNum[]" lay-text="是否数值" value="L1 Au CurrentMeter"  checked> 
+            </div></td></tr><tr><input type="text" name="tbheaderID[]" value="L1 Au Strike Current" hidden><td>99</td><td><a href="./zh_cn_en_only_config.php?tbheaderIDID=L1%C2%A0Au%C2%A0Strike%C2%A0Current" title="单个设置是否显示">L1 Au Strike Current</a></td><td><a href="./zh_cn_en_only_config.php?tbheaderIDID=L1%C2%A0Au%C2%A0Strike%C2%A0Current" title="单个设置中文翻译">线1 镀金 电流</a></td><td><div class="layui-col-md6">
+                <select lay-search="" name="tbheader_type[]"  style="background-color:#91CC75">
+                  <option value="">请选择类型</option><option value="1"  selected>电流 _(Current )</option><option value="2">电压 _(Voltage)</option><option value="3">抗氧化电导率 _(Conductivity)</option><option value="4">脉冲时间 _(OnOffTime)</option><option value="5">上水速度 _(PumpSpeed)</option><option value="6">LF速度 _(LFSpeed)</option><option value="7">温度 _(Temperature)</option><option value="8">安培分钟 _(AmpMin)</option><option value="9">流量 _(FlowRate)</option><option value="10">压力 _(Pressure)</option><option value="11">pH _(pH)</option><option value="12">液位 _(level)</option><option value="13">Be _(Be)</option><option value="14">其他 _(other)</option></select></div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_L0[]" lay-text="线0" value="L1 Au Strike Current"> 
+            </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_L1[]" lay-text="线1" value="L1 Au Strike Current" checked> 
+            </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_L2[]" lay-text="线2" value="L1 Au Strike Current"> 
+            </div></td><td><div class="layui-form">
+                <input type="checkbox" name="tbheader_L3[]" lay-text="线3" value="L1 Au Strike Current"> 
+              </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_L4[]" lay-text="线4" value="L1 Au Strike Current"> 
+            </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_main[]" lay-text="mainPlating" value="L1 Au Strike Current" checked> 
+            </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_isNum[]" lay-text="是否数值" value="L1 Au Strike Current"  checked> 
+            </div></td></tr><tr><input type="text" name="tbheaderID[]" value="L1 BS Current" hidden><td>100</td><td><a href="./zh_cn_en_only_config.php?tbheaderIDID=L1%C2%A0BS%C2%A0Current" title="单个设置是否显示">L1 BS Current</a></td><td><a href="./zh_cn_en_only_config.php?tbheaderIDID=L1%C2%A0BS%C2%A0Current" title="单个设置中文翻译">线1 退镀 电流</a></td><td><div class="layui-col-md6">
+                <select lay-search="" name="tbheader_type[]"  style="background-color:#91CC75">
+                  <option value="">请选择类型</option><option value="1"  selected>电流 _(Current )</option><option value="2">电压 _(Voltage)</option><option value="3">抗氧化电导率 _(Conductivity)</option><option value="4">脉冲时间 _(OnOffTime)</option><option value="5">上水速度 _(PumpSpeed)</option><option value="6">LF速度 _(LFSpeed)</option><option value="7">温度 _(Temperature)</option><option value="8">安培分钟 _(AmpMin)</option><option value="9">流量 _(FlowRate)</option><option value="10">压力 _(Pressure)</option><option value="11">pH _(pH)</option><option value="12">液位 _(level)</option><option value="13">Be _(Be)</option><option value="14">其他 _(other)</option></select></div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_L0[]" lay-text="线0" value="L1 BS Current"> 
+            </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_L1[]" lay-text="线1" value="L1 BS Current" checked> 
+            </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_L2[]" lay-text="线2" value="L1 BS Current"> 
+            </div></td><td><div class="layui-form">
+                <input type="checkbox" name="tbheader_L3[]" lay-text="线3" value="L1 BS Current"> 
+              </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_L4[]" lay-text="线4" value="L1 BS Current"> 
+            </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_main[]" lay-text="mainPlating" value="L1 BS Current" checked> 
+            </div></td><td><div class="layui-form">
+              <input type="checkbox" name="tbheader_isNum[]" lay-text="是否数值" value="L1 BS Current"  checked> 
+            </div></td></tr>            </tbody>
+        </table>
+        <div id="demo-laypage-2" style="height: 35px;"></div>
+    </form>
+    <script>
+        layui.use(function() {
+            var laypage = layui.laypage;
+            // 完整显示
+            laypage.render({
+                elem: 'demo-laypage-1', // 元素 id
+                count: 1798, // 数据总数
+                layout: ['count', 'prev', 'page', 'limit', 'next', 'refresh', 'skip'], // 功能布局
+                limit: 20,
+                curr: 5, // 初始获取 hash 值为 curr 的当前页
+                hash: 'page', // 自定义 hash 名称
+                jump: function(obj, first) {
+                    console.log(obj);
+                    if (!first) {
+                        // do something
+                        location = location.hash + '?page=' + obj.curr + '&limit=' + obj.limit;
+                    }
+                }
+            });
+            laypage.render({
+                elem: 'demo-laypage-2', // 元素 id
+                count: 1798, // 数据总数
+                layout: ['count', 'prev', 'page', 'limit', 'next', 'refresh', 'skip'], // 功能布局
+                limit: 20,
+                curr: 5, // 初始获取 hash 值为 curr 的当前页
+                hash: 'page', // 自定义 hash 名称
+                jump: function(obj, first) {
+                    console.log(obj);
+                    if (!first) {
+                        // do something
+                        location = location.hash + '?page=' + obj.curr + '&limit=' + obj.limit;
+                    }
+                }
+            });
+        });
+    </script>
+    <div style="height:10px">&nbsp;</div>
+
+    </body>
+
+</html>
