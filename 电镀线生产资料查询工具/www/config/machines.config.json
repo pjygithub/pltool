@@ -597,7 +597,7 @@
 {
       "id": "test5#",
       "type": "测试",
-      "host": "j.hexffffff.top",
+      "host": "",
       "ip": "localhost/www/csvtest/5",
       "EBOtime": "6",
       "DataLog": 1,
@@ -611,7 +611,7 @@
 {
       "id": "test8#",
       "type": "测试",
-      "host": "j.hexffffff.top",
+      "host": "",
       "ip": "localhost/www/csvtest/8",
       "EBOtime": "6",
       "DataLog": 1,
@@ -625,7 +625,7 @@
 {
       "id": "test1#",
       "type": "测试",
-      "host": "j.hexffffff.top",
+      "host": "",
       "ip": "localhost/www/csvtest/1",
       "EBOtime": "6",
       "DataLog": 1,
@@ -639,7 +639,7 @@
 {
       "id": "test33#",
       "type": "测试",
-      "host": "j.hexffffff.top",
+      "host": "",
       "ip": "localhost/www/csvtest/33",
       "EBOtime": "6",
       "DataLog": 1,

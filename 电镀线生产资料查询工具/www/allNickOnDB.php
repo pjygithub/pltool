@@ -142,7 +142,7 @@ while ($row = $results_type->fetchArray()) {
     $r = array("id" => $row["id"], "type" => $row['type']);
     array_push($arr_type, $r);
 }
-$results_tbheader = $db_handle->query('SELECT * FROM `tb_tbheader`');
+$results_tbheader = $db_handle->query('SELECT * FROM `tb_tbheader` ORDER BY `tbheader` ASC, `type` desc');
 while ($row = $results_tbheader->fetchArray()) {
     $ID = $row["ID"];
     $tbheader = $row["tbheader"];

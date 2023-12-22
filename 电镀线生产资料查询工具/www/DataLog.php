@@ -350,7 +350,7 @@ $cols = array_values($cols);
 
 // 按需加载
 if ($_COOKIE['show'] == "table"  or $_COOKIE['model'] == 'zh_help') {
-    include(dirname(__DIR__) . '/www/viewer/table.php');
+    include(dirname(__DIR__) . '/www/viewer/table_' . $tableType . '.php');
 } elseif ($_COOKIE['type'] == 'EBOtime') {
     include(dirname(__DIR__) . '/www/viewer/ebotime.php');
 } else {

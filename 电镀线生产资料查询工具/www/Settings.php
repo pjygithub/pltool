@@ -186,7 +186,40 @@ $machines_arr = json_decode($machines_str, true);
             ?>
 
         </div>
-        <label for="tableLicensekey">handsontable授权码：</label><input type="text" name="tableLicensekey" id="tableLicensekey" value="<?php echo urldecode($tableLicensekey) ?>" style="width:28rem">
+        <div class="layui-form">
+            表格显示方式：
+            <?
+            if ($tableType == 'layui') {
+                echo '
+                <input type="radio" name="tableType" value="layui" title="layui前端框架(分页，分页下载，不可筛选)" checked>
+                <input type="radio" name="tableType" value="handsontable6" title="handsontable_v6框架(速度快，仅下载127行数据，不可筛选)">
+                <input type="radio" name="tableType" value="luckysheet" title="luckysheet"  disabled>
+                <input type="radio" name="tableType" value="handsontable7" title="handsontable_v7.0+ 框架" disabled>
+                ';
+            } elseif ($tableType == "handsontable6") {
+                echo '
+                <input type="radio" name="tableType" value="layui" title="layui前端框架(分页，分页下载，不可筛选)">
+                <input type="radio" name="tableType" value="handsontable6" title="handsontable_v6框架(速度快，仅下载127行数据，不可筛选)"  checked >
+                <input type="radio" name="tableType" value="luckysheet" title="luckysheet"  disabled>
+                <input type="radio" name="tableType" value="handsontable7" title="handsontable_v7.0+ 框架" disabled>
+                ';
+            } elseif ($tableType == "luckysheet") {
+                echo '
+                <input type="radio" name="tableType" value="layui" title="layui前端框架(分页，分页下载，不可筛选)">
+                <input type="radio" name="tableType" value="handsontable6" title="handsontable_v6框架(速度快，仅下载127行数据，不可筛选)">
+                <input type="radio" name="tableType" value="luckysheet" title="luckysheet"  checked  disabled>
+                <input type="radio" name="tableType" value="handsontable7" title="handsontable_v7.0+ 框架" disabled>';
+            } elseif ($tableType == "handsontable7") {
+                echo '
+                <input type="radio" name="tableType" value="layui" title="layui前端框架(分页，分页下载，不可筛选)">
+                <input type="radio" name="tableType" value="handsontable6" title="handsontable_v6框架(速度快，仅下载127行数据，不可筛选)">
+                <input type="radio" name="tableType" value="luckysheet" title="luckysheet" disabled>
+                <input type="radio" name="tableType" value="handsontable7" title="handsontable_v7.0+ 框架" disabled  checked>';
+            }
+            ?>
+
+        </div>
+        <label for="tableLicensekey">handsontable_v7+ 授权码：</label><input type="text" name="tableLicensekey" id="tableLicensekey" value="<?php echo urldecode($tableLicensekey) ?>" style="width:28rem">
         <br>
         <h2>机台主机名和IP设置：</h2>
 

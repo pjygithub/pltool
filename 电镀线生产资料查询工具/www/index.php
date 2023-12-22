@@ -40,6 +40,8 @@ if (file_exists($FFversion)) {  // 判断是否有这个文件
 } else {
     $aboutAPP =  '<san  style="color: #757575;font-size:14px;">版本：？？？</span>';
 }
+$random = time();
+// var_dump($random);
 ?>
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -62,8 +64,8 @@ if (file_exists($FFversion)) {  // 判断是否有这个文件
     <script src="./js/jquery.js"></script>
     <script src="./js/jquery.cookie.min.js"></script>
     <script src="./js/md5.min.js"></script>
-    <script src="./layui/layer/layer.js"></script>
-    <link rel="stylesheet" href="./layui/css/layui.css" media="all">
+    <script src="./layui/layer/layer.js?randrom=<?php echo $random; ?>"></script>
+    <link rel="stylesheet" href="./layui/css/layui.css?randrom=<?php echo $random; ?>" media="all">
     <link rel="stylesheet" href="./css/style.css">
     <!-- body 末尾处引入 layui -->
     <script src="./layui/layui.js" charset="utf-8"></script>
@@ -205,8 +207,8 @@ if (file_exists($FFversion)) {  // 判断是否有这个文件
             value: '',
             title: '请输入口令，然后确认...',
             maxlength: 32,
-            shade: 0.9,
-            closeBtn: '0', //右上角的关闭
+            shade: 0.95,
+            closeBtn: false, //右上角的关闭
             btnAlign: 'c',
             shadeClose: false, // 表示点击阴影部分是否关闭
             icon: '2',
@@ -641,7 +643,26 @@ if (file_exists($FFversion)) {  // 判断是否有这个文件
         </ul>
         <div class="layui-btn-container">
             <button class="layui-btn layui-btn-primary demo-dropdown-on" lay-options="{trigger: 'mousedown'}">
-                更多...
+                <?php
+                switch ($_COOKIE['func']) {
+                    case 'Settings':
+                        echo "设置&优化";
+                        break;
+                    case 'tbheader_config':
+                        echo "D.L.表头管理";
+                        break;
+                    case 'zh_cn_en_config':
+                        echo "中文翻译管理";
+                        break;
+                    case 'phpliteadmin':
+                        echo "数据库管理";
+                        break;
+
+                    default:
+                        echo "更多...";
+                        break;
+                }
+                ?>
                 <i class="layui-icon layui-icon-up layui-font-12"></i>
             </button>
         </div>

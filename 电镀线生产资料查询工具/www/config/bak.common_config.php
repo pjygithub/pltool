@@ -84,10 +84,10 @@ $ebotime38 = 6;
 $ebotimeRSA = 6;
 $ebotimeOther = 6;
 $titleSort = 0; //筛选项排序，2为升排序，1为降排序，0为不排序；
-$echartShowFloatNum = 1;
+$echartShowFloatNum = 3;
 $tableLicensekey = "non-commercial-and-evaluation";
 $echartSort = "seriesDesc";
-$lockTime = 15;
+$lockTime = 150;
 $autoRefresh = 0; //自动刷新页面，0为禁用，1为打开
 $autoRefreshTime = 15;
 $calendarMark = "'0-0-15': '月中',
@@ -154,11 +154,12 @@ $calendarMark = "'0-0-15': '月中',
 '0-12-1': '艾滋病',
 '0-12-3': '残疾人',
 '0-12-9': '足球',
-'2023-12-16': '发布',
+'2023-12-20': '发布',
 '0-12-21': '篮球',
 '0-12-24': '平安夜',
 '0-12-29': '多样性',
 '0-12-31': '跨年',
 '2099-10-14': '呵呵'";
 $highEchart = 1;
+$tableType = "layui";
 $Release = 0; //1为发行版，0为测试版

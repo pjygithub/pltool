@@ -68,6 +68,12 @@ if (
   setConfig1('$echartSort = "' . $echartSort . '"', '$echartSort = "' . $_POST['echartSort'] . '"');
 }
 if (
+  $_POST['tableType'] != $tableType or
+  !empty($_POST['tableType'])
+) {
+  setConfig1('$tableType = "' . $tableType . '"', '$tableType = "' . $_POST['tableType'] . '"');
+}
+if (
   $_POST['tableLicensekey'] != $tableLicensekey or
   !empty($_POST['tableLicensekey'])
 ) {
@@ -272,7 +278,7 @@ $macstr = $macstr . ',
 {
       "id": "test5#",
       "type": "测试",
-      "host": "j.hexffffff.top",
+      "host": "",
       "ip": "localhost/www/csvtest/5",
       "EBOtime": "6",
       "DataLog": 1,
@@ -286,7 +292,7 @@ $macstr = $macstr . ',
 {
       "id": "test8#",
       "type": "测试",
-      "host": "j.hexffffff.top",
+      "host": "",
       "ip": "localhost/www/csvtest/8",
       "EBOtime": "6",
       "DataLog": 1,
@@ -300,7 +306,7 @@ $macstr = $macstr . ',
 {
       "id": "test1#",
       "type": "测试",
-      "host": "j.hexffffff.top",
+      "host": "",
       "ip": "localhost/www/csvtest/1",
       "EBOtime": "6",
       "DataLog": 1,
@@ -314,7 +320,7 @@ $macstr = $macstr . ',
 {
       "id": "test33#",
       "type": "测试",
-      "host": "j.hexffffff.top",
+      "host": "",
       "ip": "localhost/www/csvtest/33",
       "EBOtime": "6",
       "DataLog": 1,

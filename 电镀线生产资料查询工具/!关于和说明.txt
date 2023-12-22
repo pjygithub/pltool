@@ -63,13 +63,14 @@
     学习文档：https://learn.jquery.com/about-jquery/
     开源许可文件：https://cdn.jsdelivr.net/npm/jquery@3.5.1/LICENSE.txt
     开源许可类型：MIT License 
-(2) 需<b>商业授权</b>的有：
-1. <b>handsontable.js</b>：是一个 JavaScript 数据网格组件，它为您的应用程序带来众所周知的电子表格外观。可用于构建类似 web 应用程序的 excel。
+6. <b>handsontable.js</b>：是一个 JavaScript 数据网格组件，它为您的应用程序带来众所周知的电子表格外观。可用于构建类似 web 应用程序的 excel。
     官方网站：https://handsontable.com/
     官方文档：https://handsontable.com/docs/javascript-data-grid/
     开源地址：https://github.com/handsontable/handsontable
     开源许可文件：https://github.com/handsontable/handsontable/blob/develop/LICENSE.txt
     开源许可类型：MIT License
+    <p style="color:red;font-size:18px;font-weight:800">注意：handsontable.js的v7.0以上版本需要购买商业授权，这里是v6.2.2版本。详见https://github.com/handsontable/handsontable/releases?page=5和https://handsontable.com/docs/react-data-grid/license-key/</p>
+(2) 需<b>商业授权</b>的有：
 
 <h3 id="四">四、更新日志：</h3>
 (1) 创建：2023年2月1日 22:56

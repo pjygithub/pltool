@@ -96,9 +96,9 @@ if (isset($_COOKIE['lang']) and $_COOKIE['lang'] == 'en') {
 }
 // 按需加载
 if (isset($_COOKIE['show']) and $_COOKIE['show'] == "table" or $_COOKIE['model'] == 'zh_help') {
-    include(dirname(__DIR__) . '/www/viewer/table.php');
+    include(dirname(__DIR__) . '/www/viewer/table_' . $tableType . '.php');
 } elseif (!isset($_COOKIE['model']) or $_COOKIE['model'] != 'debuger') {
-    include(dirname(__DIR__) . '/www/viewer/table.php');
+    include(dirname(__DIR__) . '/www/viewer/table_' . $tableType . '.php');
 } else {
     include(dirname(__DIR__) . '/www/viewer/echart.php');
 }
